@@ -13,7 +13,7 @@ namespace _1STDAY.Controllers
         {
             ViewBag.Name = "Asif Ahmed Tanjid";
             ViewBag.ID = "20-44249-3";
-            ViewBag.Inst = " AIUB";
+            ViewBag.Inst = "American International University - Bangladesh";
             ViewBag.CGPA = 3.98;
 
 
@@ -24,7 +24,7 @@ namespace _1STDAY.Controllers
         {
             ViewBag.Name = "Asif Ahmed Tanjid";
             ViewBag.ID = "20-44249-3";
-            ViewBag.Inst = " AIUB";
+            ViewBag.Inst = "American International University - Bangladesh";
             ViewBag.CGPA = 3.98;
             ViewBag.Subject = " BSc in CSE";
             return View();
