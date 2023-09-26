@@ -22,7 +22,7 @@ namespace _1STDAY.Controllers
 
         public ActionResult Bio()
         {
-            ViewBag.Name = "Asif Ahmed Tanjid";
+            ViewBag.Name = "Asif";
             ViewBag.ID = "20-44249-3";
             ViewBag.Inst = "American International University - Bangladesh";
             ViewBag.CGPA = 3.98;
