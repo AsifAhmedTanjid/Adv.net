@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+@{
+    bool CheckGender(string gender)
+    {
+        if (Model!=null && Model.Gender !=null && Model.Gender.Equals(gender))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    bool CheckProfession(string profession)
+    {
+        if (Model != null && Model.Profession != null && Model.Profession.Equals(profession))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    bool CheckHobbies(string hobby)
+    {
+        if (Model != null &&
+            Model.Hobbies != null)
+        {
+            foreach (var h in Model.Hobbies)
+            {
+                if (h.Equals(hobby)) return true;
+            }
+        }
+        return false;
+    }
+}
+
+<h2>SignUp</h2>
+
+
+<form action="" method="post">
+
+    Name : <input type="text" name="Name" value="@(Model == null? "":Model.Name)" placeholder="Your Name" />  <span class="text-danger"><i>@Html.ValidationMessage("Name")</i></span><br />
+    Password : <input type="password"  name="Password" value="@(Model == null? "":Model.Password)" placeholder="Set Password" /> <span class="text-danger">@Html.ValidationMessage("Password")</span> <br />
+    Gender : <input type="radio" name="Gender" checked="@CheckGender("Male")" value="Male" />Male
+    <input type="radio" name="Gender" checked="@CheckGender("Female")" value="Female" />Female <span class="text-danger">@Html.ValidationMessage("Gender")</span>
+    <br />
+
+    Profession :
+    <select name="Profession">
+        <option disabled selected>Select</option>
+        <option  selected="@CheckProfession("Student")"> Student </option>
+        <option  selected="@CheckProfession("Teacher")"> Teacher </option>
+        <option  selected="@CheckProfession("Business")"> Business </option>
+        <option  selected="@CheckProfession("Job")"> Job </option>
+    </select>
+    <span class="text-danger">@Html.ValidationMessage("Profession")</span>
+    <br />
+    Hobbies :
+    <input type="checkbox" name="Hobbies[]" checked="@CheckHobbies("Travelling")" value="Travelling" />Travelling
+    <input type="checkbox" name="Hobbies[]" checked="@CheckHobbies("Reading")" value="Reading" />Reading
+    <input type="checkbox" name="Hobbies[]" checked="@CheckHobbies("Gaming")" value="Gaming" />Gaming
+    <input type="checkbox" name="Hobbies[]" checked="@CheckHobbies("Sleeping")" value="Sleeping" />Sleeping
+    <span class="text-danger">@Html.ValidationMessage("Hobbies")</span>
+    <br />
+
+    <input type="submit" value="Sign Up" class="btn btn-success" />
+
+</form>
+

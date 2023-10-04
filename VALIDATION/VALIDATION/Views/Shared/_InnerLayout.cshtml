@@ -1,0 +1,30 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_InnerLayout</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div>
+        <a class="btn btn-primary" href="/Dashboard/Profiles">Profile</a>
+        <a class="btn btn-primary" href="/Dashboard/Education">Education</a>
+        <a class="btn btn-warning" href="/dashboard/Logout">Logout</a>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+
+    <div>
+        Copyright @@ 20-44249-3
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
