@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "EditStudent";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+<h2>EditStudent</h2>
+
+<form action="" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="text" name="Name" value="@Model.Name" />
+    <input type="text" name="CGPA" value="@Model.CGPA" />
+    <input type="submit" value="Update" class="btn btn-warning" />
+</form>
+

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+<h2>Student</h2>
+<a class="btn btn-primary" href="/home/createStudent">Create</a>
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>CGPA</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var s in Model)
+    {
+        <tr text-align: center;>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>@s.CGPA</td>
+            <td> <a href="/home/editstudent/@s.Id" class="btn btn-primary">Edit</a> <a href="/home/deletestudent/@s.Id" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete @s.Name?')">Delete</a></td>
+        </tr>
+    }
+</table>
+
