@@ -234,6 +234,7 @@
     <Content Include="Views\Home\CreateStudent.cshtml" />
     <Content Include="Views\Home\EditStudent.cshtml" />
     <Content Include="Views\css\Index.cshtml" />
+    <Content Include="Views\Home\DeleteStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

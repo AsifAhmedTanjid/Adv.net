@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "DeleteStudent";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+
+
+<form action="/Home/Confirmdeletestudent" method="post" class=" form-control">
+    <input type="hidden" name="id" value="@Model.Id">
+    <h2>Are you sure you want to delete @Model.Name</h2>
+    <input type="submit" value="Yes" class="btn btn-danger" />
+    <a href="/home/student" class="btn btn-primary">No</a>
+</form>

@@ -65,16 +65,7 @@ namespace EF1.Controllers
         }
 
        
-        public ActionResult DeleteStudent(int id)
-        {
-            var db = new SunniestWigEntities();
-            var data = (from s in db.Students
-                        where s.Id == id 
-                        select s).SingleOrDefault();
-            db.Students.Remove(data);
-            db.SaveChanges();
-            return RedirectToAction("Student");
-        }
+       
 
         [HttpGet]
         public ActionResult EditStudent(int id)
@@ -99,6 +90,28 @@ namespace EF1.Controllers
             return RedirectToAction("Student");
             
         }
+
+        public ActionResult DeleteStudent(int id)
+        {
+            var db = new SunniestWigEntities();
+            var data = (from s in db.Students
+                        where s.Id == id
+                        select s).SingleOrDefault();
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmDeleteStudent(int id)
+        {
+            var db = new SunniestWigEntities();
+            var data = (from s in db.Students
+                        where s.Id == id
+                        select s).SingleOrDefault();
+            db.Students.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("Student");
+        }
+
 
 
     }
