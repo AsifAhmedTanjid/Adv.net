@@ -48,6 +48,8 @@ namespace EF1.Controllers
         [HttpGet]
         public ActionResult CreateStudent()
         {
+            var db = new SunniestWigEntities();
+            ViewBag.Departments = db.Departments.ToList();
             return View();
         }
         [HttpPost]

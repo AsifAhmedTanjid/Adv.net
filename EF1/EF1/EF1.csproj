@@ -128,7 +128,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\cssController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="EF\Cours.cs">
+      <DependentUpon>UMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CourseStudent.cs">
+      <DependentUpon>UMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\Department.cs">
       <DependentUpon>UMS.tt</DependentUpon>
     </Compile>
@@ -226,6 +233,7 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\CreateStudent.cshtml" />
     <Content Include="Views\Home\EditStudent.cshtml" />
+    <Content Include="Views\css\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

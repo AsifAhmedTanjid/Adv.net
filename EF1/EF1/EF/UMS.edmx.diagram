@@ -7,6 +7,12 @@
       <Diagram DiagramId="71c43646141844c3bcbe2da28b7c61fe" Name="Diagram1">
         <EntityTypeShape EntityType="SunniestWigModel.Department" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SunniestWigModel.Student" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SunniestWigModel.Cours" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="SunniestWigModel.CourseStudent" Width="1.5" PointX="5.25" PointY="2.75" />
+        <AssociationConnector Association="SunniestWigModel.FK_Courses_Departments" />
+        <AssociationConnector Association="SunniestWigModel.FK_CourseStudent_Courses" />
+        <AssociationConnector Association="SunniestWigModel.FK_CourseStudent_Students" />
+        <AssociationConnector Association="SunniestWigModel.FK_Students_Departments" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -6,6 +6,8 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="SunniestWigModel.FK_Courses_Departments" FromRole="Department" ToRole="Cours" />
+    <NavigationProperty Name="Students" Relationship="SunniestWigModel.FK_Students_Departments" FromRole="Department" ToRole="Student" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -14,9 +16,99 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CGPA" Type="Double" Nullable="false" />
+    <Property Name="DeptId" Type="Int32" />
+    <NavigationProperty Name="CourseStudents" Relationship="SunniestWigModel.FK_CourseStudent_Students" FromRole="Student" ToRole="CourseStudent" />
+    <NavigationProperty Name="Department" Relationship="SunniestWigModel.FK_Students_Departments" FromRole="Student" ToRole="Department" />
   </EntityType>
   <EntityContainer Name="SunniestWigEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Departments" EntityType="Self.Department" />
     <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Courses" EntityType="SunniestWigModel.Cours" />
+    <EntitySet Name="CourseStudents" EntityType="SunniestWigModel.CourseStudent" />
+    <AssociationSet Name="FK_Courses_Departments" Association="SunniestWigModel.FK_Courses_Departments">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Cours" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseStudent_Courses" Association="SunniestWigModel.FK_CourseStudent_Courses">
+      <End Role="Cours" EntitySet="Courses" />
+      <End Role="CourseStudent" EntitySet="CourseStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseStudent_Students" Association="SunniestWigModel.FK_CourseStudent_Students">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="CourseStudent" EntitySet="CourseStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Departments" Association="SunniestWigModel.FK_Students_Departments">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="DeptId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="SunniestWigModel.FK_Courses_Departments" FromRole="Cours" ToRole="Department" />
+    <NavigationProperty Name="CourseStudents" Relationship="SunniestWigModel.FK_CourseStudent_Courses" FromRole="Cours" ToRole="CourseStudent" />
+  </EntityType>
+  <EntityType Name="CourseStudent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cid" Type="Int32" Nullable="false" />
+    <Property Name="Sid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cours" Relationship="SunniestWigModel.FK_CourseStudent_Courses" FromRole="CourseStudent" ToRole="Cours" />
+    <NavigationProperty Name="Student" Relationship="SunniestWigModel.FK_CourseStudent_Students" FromRole="CourseStudent" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_Courses_Departments">
+    <End Type="SunniestWigModel.Department" Role="Department" Multiplicity="1" />
+    <End Type="SunniestWigModel.Cours" Role="Cours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cours">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseStudent_Courses">
+    <End Type="SunniestWigModel.Cours" Role="Cours" Multiplicity="1" />
+    <End Type="SunniestWigModel.CourseStudent" Role="CourseStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="Cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseStudent_Students">
+    <End Type="SunniestWigModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="SunniestWigModel.CourseStudent" Role="CourseStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="Sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Departments">
+    <End Type="SunniestWigModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="SunniestWigModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
