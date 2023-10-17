@@ -21,6 +21,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cid" Type="int" Nullable="false" />
           <Property Name="Sid" Type="int" Nullable="false" />
+          <Property Name="EnrollTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Departments">
           <Key>
@@ -174,6 +175,7 @@
           <Property Name="Sid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cours" Relationship="SunniestWigModel.FK_CourseStudent_Courses" FromRole="CourseStudent" ToRole="Cours" />
           <NavigationProperty Name="Student" Relationship="SunniestWigModel.FK_CourseStudent_Students" FromRole="CourseStudent" ToRole="Student" />
+          <Property Name="EnrollTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Courses_Departments">
           <End Type="SunniestWigModel.Department" Role="Department" Multiplicity="1" />
@@ -260,6 +262,7 @@
           <EntitySetMapping Name="CourseStudents">
             <EntityTypeMapping TypeName="SunniestWigModel.CourseStudent">
               <MappingFragment StoreEntitySet="CourseStudent">
+                <ScalarProperty Name="EnrollTime" ColumnName="EnrollTime" />
                 <ScalarProperty Name="Sid" ColumnName="Sid" />
                 <ScalarProperty Name="Cid" ColumnName="Cid" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

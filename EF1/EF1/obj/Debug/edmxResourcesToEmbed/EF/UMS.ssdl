@@ -16,6 +16,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Cid" Type="int" Nullable="false" />
     <Property Name="Sid" Type="int" Nullable="false" />
+    <Property Name="EnrollTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Departments">
     <Key>

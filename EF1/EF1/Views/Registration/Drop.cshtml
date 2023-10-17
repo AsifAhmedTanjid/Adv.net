@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Drop";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+<h2>Drop</h2>
+
+
+<table class="table table-bordered">
+
+    <tr>
+        <th> Student ID</th>
+        <th> Student Name</th>
+        <th>Course Name</th>
+        <th>Course ID</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var s in Model)
+    {
+        <tr text-align: center;>
+            <td>@s.Sid</td>
+            <td>@s.Student.Name</td>
+            <td>@s.Cours.Name</td>
+
+            <td>@s.Cid</td>
+
+            <td> <a href="/registration/Dropcourse/@s.Id" class="btn btn-danger">Drop</a></td>
+        </tr>
+    }
+</table>

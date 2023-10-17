@@ -17,6 +17,7 @@ namespace EF1.EF
         public int Id { get; set; }
         public int Cid { get; set; }
         public int Sid { get; set; }
+        public System.DateTime EnrollTime { get; set; }
     
         public virtual Cours Cours { get; set; }
         public virtual Student Student { get; set; }

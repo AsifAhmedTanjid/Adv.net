@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\cssController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="EF\Cours.cs">
       <DependentUpon>UMS.tt</DependentUpon>
     </Compile>
@@ -235,6 +236,8 @@
     <Content Include="Views\Home\EditStudent.cshtml" />
     <Content Include="Views\css\Index.cshtml" />
     <Content Include="Views\Home\DeleteStudent.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Registration\Drop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

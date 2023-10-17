@@ -62,6 +62,7 @@
     <Property Name="Sid" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cours" Relationship="SunniestWigModel.FK_CourseStudent_Courses" FromRole="CourseStudent" ToRole="Cours" />
     <NavigationProperty Name="Student" Relationship="SunniestWigModel.FK_CourseStudent_Students" FromRole="CourseStudent" ToRole="Student" />
+    <Property Name="EnrollTime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <Association Name="FK_Courses_Departments">
     <End Type="SunniestWigModel.Department" Role="Department" Multiplicity="1" />
